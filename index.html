@@ -134,6 +134,40 @@ outFields: ["INSTNM","INSTSIZE", "HBCU", "WEBADDR"],
     });
 map.add(usaeduLayer);
 
+const helirenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "heli.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      }
+const usaheliLayer = new FeatureLayer({
+  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/USAirports/FeatureServer",
+renderer: helirenderer,
+definitionExpression: "Fac_Type = 'HELIPORT'",
+});
+map.add(usaheliLayer);
+//const to make the airport labels
+const airportLabels = {
+  symbol: {
+    type: "text",
+    color: "#FFFFFF",
+    haloColor: "#5E8D74",
+    haloSize: "2px",
+    font: {
+      size: "12px",
+      family: "Noto Sans",
+      style: "italic",
+      weight: "normal"
+    }
+  },
+  labelPlacement: "above-center",
+  labelExpressionInfo: {
+    expression: "$feature.Fac_Name"
+  }
+};
 const airportrenderer = {
         "type": "simple",
         "symbol": {
@@ -145,9 +179,13 @@ const airportrenderer = {
       }
 const usaAirportsLayer = new FeatureLayer({
   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/USAirports/FeatureServer",
-renderer: airportrenderer});
+renderer: airportrenderer,
+definitionExpression: "Fac_Type = 'AIRPORT'",
+labelingInfo: [airportLabels] //adding the labels //adding sql to filter for airports
+});
 
 map.add(usaAirportsLayer);
+
 
     });
     // Define a pop-up for usaeduLaye
