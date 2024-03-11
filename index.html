@@ -188,7 +188,7 @@ labelingInfo: [airportLabels] //adding the labels //adding sql to filter for air
 map.add(usaAirportsLayer);
 
 //adding the const for the feature layer
-const myAirports = new FeatureLayer({
+const AN_Airports = new FeatureLayer({
  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/AN_Airports/FeatureServer",
  
  //adding the popup here
@@ -197,10 +197,10 @@ const myAirports = new FeatureLayer({
 });
 
 //adding the feature layer to the map
-map.add(myAirports);
+map.add(AN_Airports);
 // Set the point layer's LayerInfo
 const pointInfos = {
- layer: myAirports
+ layer: AN_Airports
 }
 
 // Begin Editor constructor
