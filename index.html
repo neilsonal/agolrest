@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Hello, AGOL!</title>
+  <title>Writing!</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
@@ -37,106 +37,6 @@
           container: "viewDiv" // Div element
         });
         const graphicsLayer = new GraphicsLayer();  
-map.add(graphicsLayer);
-const point = { //Create a point  
-  type: "point",  
-  style: "cross",
-  longitude: -82.324829,    //long lat of Stevie Ray Vaughan Statue
-  latitude: 29.651634,
-};
-const simpleMarkerSymbol = {  
-  type: "simple-marker", 
-  style: "cross", 
-  color: [0, 0, 139],  // Color of blues rock
-  outline: {  
-    color: [0, 0, 200], // White  
-    width: 20
-  }  
-};
-const popupTemplate = {
-    title: "{Name}",
-    content: "{Description}"
- }
- const attributes = {
-    Name: "Gainesville, Florida!",
-    Description: "A Gator-Blue marker showing off Gainesville's location in the heart of North Central Florida."
- }
-const pointGraphic = new Graphic({  
-  geometry: point,  
-  symbol: simpleMarkerSymbol,
-  attributes: attributes,
-popupTemplate: popupTemplate  
-});
-
-graphicsLayer.add(pointGraphic);
-const polyline = {
-  type: "polyline",
-  paths: [
-    [-82.513606, 29.782798], // Starting point coordinates
-    [-82.293879, 29.493943]  // Ending point coordinates
-  ]
-};
-
-const simpleLineSymbol = {
-  type: "simple-line",
-  color: [226, 119, 40], // Orange
-  width: 2
-};
-
-const polylineGraphic = new Graphic({
-  geometry: polyline,
-  symbol: simpleLineSymbol
-});
-
-graphicsLayer.add(polylineGraphic);
-const polygon = {
-  type: "polygon",
-  rings: [
-    [-82.339286, 29.652332], // First point coordinates
-    [-82.372472, 29.652166], // Second point coordinates
-    [-82.372281, 29.627409], // Third point coordinates
-    [-82.339591, 29.641832]  // Fourth point coordinates
-  ]
-};
-
-const simpleFillSymbol = {
-  type: "simple-fill",
-  color: [227, 139, 79, 0.8], // Orange, semi-transparent
-  outline: {
-    color: [255, 255, 255], // White
-    width: 1
-  }
-};
-
-const polygonGraphic = new Graphic({
-  geometry: polygon,
-  symbol: simpleFillSymbol
-});
-
-graphicsLayer.add(polygonGraphic);
-const popupEduusa = {
-      "title": "Colleges and Universities",
-      "content": "<b>Name:</b> {INSTNM}<br><b>Total Enrollment:</b> {INSTSIZE}<br><b>HBCU?:</b> {HBCU}<br><b>Website:</b> {WEBADDR}"
-    }
-    const schoolRenderer = {
-        "type": "simple",
-        "symbol": {
-          "type": "picture-marker",
-          "url": "school.png",
-          "width": "18px",
-          "height": "18px"
-        }
-      }
-const usaeduLayer = new FeatureLayer({
-url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer",
-title: "Colleges and Universities", //get URL from AGOL Item Page
-renderer: schoolRenderer,
-outFields: ["INSTNM","INSTSIZE", "HBCU", "WEBADDR"],
-      popupTemplate: popupEduusa
-      
-    });
-map.add(usaeduLayer);
-
 const helirenderer = {
         "type": "simple",
         "symbol": {
