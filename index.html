@@ -20,8 +20,9 @@
 "esri/Graphic",  
 "esri/layers/GraphicsLayer",
 //adding in the module for the feature layers
-"esri/layers/FeatureLayer"   
-], function(esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer) {
+"esri/layers/FeatureLayer" ,
+"esri/widgets/Editor"
+], function(esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor) {
 
       esriConfig.apiKey = "AAPKa797ff28cfdb40dbab3320856fd0b5f4NgLkI255Bv0bGtz1Z5pUAwclh2E3CFU03tGSun_a-joPSxRZGmrBPBaWr_BI1o5S";
       const map = new Map({
@@ -186,7 +187,30 @@ labelingInfo: [airportLabels] //adding the labels //adding sql to filter for air
 
 map.add(usaAirportsLayer);
 
+//adding the const for the feature layer
+const myAirports = new FeatureLayer({
+ url: "YOUR URL HERE",
+ 
+ //adding the popup here
+ outFields: ["AirportCode"],
 
+});
+
+//adding the feature layer to the map
+map.add(myAirports);
+// Set the point layer's LayerInfo
+const pointInfos = {
+ layer: myAirports
+}
+
+// Begin Editor constructor
+const editor = new Editor({
+ view: view,
+ layerInfos: [pointInfos]
+ }); // End Editor constructor
+
+// Add the widget to the view
+view.ui.add(editor, "top-right");
     });
     // Define a pop-up for usaeduLaye
   </script>
