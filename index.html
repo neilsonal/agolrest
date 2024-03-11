@@ -21,8 +21,9 @@
 "esri/layers/GraphicsLayer",
 //adding in the module for the feature layers
 "esri/layers/FeatureLayer" ,
-"esri/widgets/Editor"
-], function(esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor) {
+"esri/widgets/Editor",
+"esri/widgets/Legend"
+], function(esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer, Editor, Legend) {
 
       esriConfig.apiKey = "AAPKa797ff28cfdb40dbab3320856fd0b5f4NgLkI255Bv0bGtz1Z5pUAwclh2E3CFU03tGSun_a-joPSxRZGmrBPBaWr_BI1o5S";
       const map = new Map({
@@ -211,6 +212,11 @@ const editor = new Editor({
 
 // Add the widget to the view
 view.ui.add(editor, "top-right");
+let legend = new Legend({
+  view: view
+});
+
+view.ui.add(legend, "bottom-left");
     });
     // Define a pop-up for usaeduLaye
   </script>
