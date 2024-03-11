@@ -128,7 +128,8 @@ const popupEduusa = {
         }
       }
 const usaeduLayer = new FeatureLayer({
-url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer", //get URL from AGOL Item Page
+url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer",
+title: "Colleges and Universities", //get URL from AGOL Item Page
 renderer: schoolRenderer,
 outFields: ["INSTNM","INSTSIZE", "HBCU", "WEBADDR"],
       popupTemplate: popupEduusa
@@ -147,6 +148,7 @@ const helirenderer = {
       }
 const usaheliLayer = new FeatureLayer({
   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/USAirports/FeatureServer",
+  title: "Heliports",
 renderer: helirenderer,
 definitionExpression: "Fac_Type = 'HELIPORT'",
 });
@@ -181,6 +183,7 @@ const airportrenderer = {
       }
 const usaAirportsLayer = new FeatureLayer({
   url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/USAirports/FeatureServer",
+  title: "Airports",
 renderer: airportrenderer,
 definitionExpression: "Fac_Type = 'AIRPORT'",
 labelingInfo: [airportLabels] //adding the labels //adding sql to filter for airports
@@ -191,7 +194,7 @@ map.add(usaAirportsLayer);
 //adding the const for the feature layer
 const AN_Airports = new FeatureLayer({
  url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/AN_Airports/FeatureServer",
- 
+ title: "User-Written Airports", // Replace "Your New Title" with your desired title
  //adding the popup here
  outFields: ["AirportCode"],
 
